@@ -30,6 +30,17 @@ const friendData = [
     },
 ];
 
+addMushroomButton.addEventListener('click', () => {
+    if (Math.random() > 0.5) {
+        alert('found a mushroom!');
+
+        mushroomCount++;
+        displayMushrooms();
+    } else {
+        alert('no luck!');
+    }
+});
+
 function displayFriends() {
     // clear out the friends in DOM
     friendsEl.textContent = '';
