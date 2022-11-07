@@ -30,17 +30,6 @@ const friendData = [
     },
 ];
 
-addMushroomButton.addEventListener('click', () => {
-    if (Math.random() > 0.5) {
-        alert('found a mushroom!');
-
-        mushroomCount++;
-        displayMushrooms();
-    } else {
-        alert('no luck!');
-    }
-});
-
 function displayFriends() {
     // clear out the friends in DOM
     friendsEl.textContent = '';
@@ -93,7 +82,6 @@ addFriendButton.addEventListener('click', () => {
     // reset the input
     friendInputEl.value = '';
     // display all the friends (use a function here)
-    displayFriends();
 });
 
 addMushroomButton.addEventListener('click', () => {
