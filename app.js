@@ -1,6 +1,6 @@
 // import functions and grab DOM elements
 import { renderMushroom, renderFriend } from './render-utils.js';
-import { addFriend, findFriendByName } from './render-utils.js';
+import { addFriend, fiendFriendByName } from './data-utils.js';
 
 const friendsEl = document.querySelector('.friends');
 const friendInputEl = document.getElementById('friend-input');
@@ -47,6 +47,7 @@ addFriendButton.addEventListener('click', () => {
     // create a new friend object
     const newFriend = {
         name: name || `Friend #${Math.floor(Math.random() * 1000)}`,
+        satisfaction: 1,
     };
     // push it into the friends state array, passed in as an argument
     friendData.push(newFriend);
@@ -81,6 +82,7 @@ function displayFriends() {
             displayMushrooms();
         });
         // append the friendEl to the friends list in DOM
+        friendsEl.append(friendEl);
     }
 }
 
