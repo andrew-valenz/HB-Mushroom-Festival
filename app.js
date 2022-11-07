@@ -1,15 +1,18 @@
 // import functions and grab DOM elements
-import { renderMushroom, renderFriend } from './render-utils.js';
+import { renderMushroom, renderFungus, renderFriend } from './render-utils.js';
 import { addFriend, findFriendByName } from './data-utils.js';
 
 const friendsEl = document.querySelector('.friends');
 const friendInputEl = document.getElementById('friend-input');
 const mushroomsEl = document.querySelector('.mushrooms');
 const addMushroomButton = document.getElementById('add-mushroom-button');
+const fungiEl = document.querySelector('.fungi');
+const addFungusButton = document.getElementById('add-fungus-button');
 const addFriendButton = document.getElementById('add-friend-button');
 // initialize state
 
 let mushroomCount = 3;
+let fungusCount = 3;
 
 const friendData = [
     {
@@ -45,6 +48,9 @@ function displayFriends() {
             if (mushroomCount === 0) {
                 alert('no mushrooms left! go forage for some more');
             }
+            if (fungusCount === 0) {
+                alert('no fungi left! go forage for some more');
+            }
             //             increment the friends satisfaction and decrement your mushrooms
             if (mushroomCount > 0 && friendInState.satisfaction < 3) {
                 friendInState.satisfaction++;
@@ -52,6 +58,13 @@ function displayFriends() {
                 //             then display your friends and mushrooms with the updated state
                 displayFriends();
                 displayMushrooms();
+            }
+            if (fungusCount > 0 && friendInState.satisfaction < 3) {
+                friendInState.satisfaction++;
+                fungusCount--;
+
+                displayFriends();
+                displayFungi();
             }
         });
         // append the friendEl to the friends list in DOM
@@ -69,6 +82,16 @@ function displayMushrooms() {
     }
 }
 
+function displayFungi() {
+    fungiEl.textContent = '';
+
+    for (let i = 0; i < fungusCount; i++) {
+        const fungusEl = renderFungus();
+
+        fungiEl.append(fungusEl);
+    }
+}
+
 addFriendButton.addEventListener('click', () => {
     // get the name from the input
     const name = friendInputEl.value;
@@ -82,6 +105,7 @@ addFriendButton.addEventListener('click', () => {
     // reset the input
     friendInputEl.value = '';
     // display all the friends (use a function here)
+    displayFriends();
 });
 
 addMushroomButton.addEventListener('click', () => {
@@ -95,5 +119,17 @@ addMushroomButton.addEventListener('click', () => {
     }
 });
 
+addFungusButton.addEventListener('click', () => {
+    if (Math.random() > 0.5) {
+        alert('found a fungus!');
+
+        fungusCount++;
+        displayFungi();
+    } else {
+        alert('no luck!');
+    }
+});
+
 displayFriends();
 displayMushrooms();
+displayFungi();

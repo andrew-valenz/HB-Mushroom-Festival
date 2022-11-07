@@ -213,6 +213,22 @@ footer {
     background-image: url('../assets/porcini.png');
 }
 
+.fungi {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 200px;
+}
+
+.fungus {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../assets/fungus.png');
+}
+
 label {
     font-size: 2rem;
 }
