@@ -3,6 +3,7 @@ export function addFriend(name, friends) {
         name: name || `Friend #${Math.floor(Math.random() * 1000)}`,
         satisfaction: 1,
     };
+
     friends.push(newFriend);
 }
 
